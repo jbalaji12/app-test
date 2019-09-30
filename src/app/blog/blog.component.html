@@ -1,0 +1,27 @@
+<table class="table table-stripped  table-hover">
+	<thead>
+		<th>title</th>
+		<th>url</th>
+		<th>created_at</th>
+		<th>author</th>
+	</thead>
+	<tbody>
+		<tr *ngFor="let post of allPosts?.hits" (click)="setSinglePost(post, singlePostModal)">
+			<td>{{post.title}}</td>
+			<td>{{post.url}}</td>
+			<td>{{post.created_at}}</td>
+			<td>{{post.author}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<ng-template #singlePostModal let-modal>
+	<div class="modal-header">
+		<h5> Showing {{singlePost.title}}</h5>
+		<button type="button" class="close" aria-label="Close" (click)="closeModal()"><span>&times;</span></button>
+	</div>
+	<div  class="modal-body">
+		<pre>{{singlePost | json}}</pre>
+	</div>
+	
+</ng-template>
